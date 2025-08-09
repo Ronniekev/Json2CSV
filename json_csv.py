@@ -8,12 +8,17 @@ def create_csv(plan_name, plan, plan_time, allocated_time):
     -total plan time
     -total allocated time"""
 
+    plan_time = 0
+
+    for task in plan:
+        plan_time += task['duration']
+   
     file_name = f'{plan_name}.csv'
     download = os.path.join(os.path.expanduser('~'), 'Downloads')
     path = os.path.join(download, file_name)
 
     with open(path, 'w', newline='', encoding='utf-8') as csvfile:
-        writer =csv.writer(csvfile, delimiter='  ')
+        writer =csv.writer(csvfile, delimiter=' ')
         writer.writerow(plan_name)
         writer.writerow('    '+ plan[1].keys())
         for task in plan:

@@ -9,7 +9,7 @@ print("Listening for messages ...")
 #wait for message from program
 
 while True:
-    message = replySocket.recv_string()
+    message = replySocket.recv_json()
     print("Request recieved")
 
 
@@ -30,4 +30,4 @@ while True:
         
         
     
-    replySocket.send_string(json.dumps(response_message))
+    replySocket.send_json(response_message)
